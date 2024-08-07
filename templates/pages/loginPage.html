@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block contentLogin %}
+<div class="login-box">
+    <div class="login-logo">
+      
+      <div class="image">
+        <img src="{{url_for('static', filename='dist/img/logo.jpg')}}" style="width: 15vh;" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <a href="#"><b>BMT Al-Hikmah Permata</b></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card card-outline card-primary">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Mohon Login Terlebih Dahulu Sebelum Melanjutkan !</p>
+  
+        <form action="{{ url_for('login' ) }}" method="post">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="username" placeholder="Username" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <code>
+            {{pesan}}
+          </code>
+          <div class="row">
+            <!-- /.col -->
+            <div class="col-4 ml-auto mr-1">
+              <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+{% endblock %}
