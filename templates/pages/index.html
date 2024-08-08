@@ -75,6 +75,7 @@
                             <div class="modal-header bg-primary">
                               <h4 class="modal-title">Detail Anggota</h4>
                               <div class="">
+                                <button id="downloadP{{ loop.index }}" class="btn btn-sm btn-success">Cetak PDF</button>
                                 <a href="/edit/{{dt[0]}}" class="btn btn-sm btn-warning">
                                   Edit
                                 </a>
@@ -84,11 +85,32 @@
                               </div>
                             </div>
                             <div class="modal-body">
-                              <div class="row">
+                              <div class="row" id="printdata">
                                 <div class="col-md-12"><h5><b>Data Diri</b></h5></div>
                                 <div class="col-md-6">
-                                  <h5>Nama :  <br> &nbsp &nbsp <b>{{dt[1]}}</b></h5>
+                                  <h5>Nama : <br> &nbsp &nbsp <b>{{dt[1]}}</b></h5>
                                 </div>
+                                <script>
+                                  document.getElementById('downloadP{{ loop.index }}').addEventListener('click', ()=>{
+                                    printJS({
+                                      printable: [
+                                        "{{ url_for('static', filename='images/suami/'+dt[5]) }}", 
+                                        "{{ url_for('static', filename='images/istri/'+dt[6]) }}", 
+                                        "{{ url_for('static', filename='images/ktp/suami/'+dt[7]) }}",
+                                        "{{ url_for('static', filename='images/ktp/istri/'+dt[8]) }}",
+                                        "{{ url_for('static', filename='images/kk/'+dt[9]) }}",
+                                        "{{ url_for('static', filename='images/kendaraan/'+dt[10]) }}",
+                                        "{{ url_for('static', filename='images/sertifikat_tanah/'+dt[11]) }}",
+                                        "{{ url_for('static', filename='images/stnk/'+dt[12]) }}",
+                                        "{{ url_for('static', filename='images/bpkb/'+dt[13]) }}",
+                                        "{{ url_for('static', filename='images/rmh/'+dt[15]) }}"
+                                      ],
+                                      type: 'image',
+                                      header: 'File Pendukung : {{ dt[1] }}',
+                                      imageStyle: 'width:50%;margin-bottom:20px;'
+                                    })
+                                  })
+                                </script>
                                 <div class="col-md-6">
                                   <h5>Tempat Tanggal Lahir :  <br> &nbsp &nbsp <b>{{dt[2]}}</b></h5>
                                 </div>
@@ -227,6 +249,7 @@
                             <div class="modal-header bg-primary">
                               <h4 class="modal-title">Detail Anggota</h4>
                               <div class="">
+                                <button id="downloadL{{ loop.index }}" class="btn btn-sm btn-success">Cetak PDF</button>
                                 <a href="/edit/{{dt[0]}}" class="btn btn-sm btn-warning">
                                   Edit
                                 </a>
@@ -234,6 +257,28 @@
                                   Hapus
                                 </a>
                               </div>
+                              
+                              <script>
+                                document.getElementById('downloadL{{ loop.index }}').addEventListener('click', ()=>{
+                                  printJS({
+                                    printable: [
+                                      "{{ url_for('static', filename='images/suami/'+dt[5]) }}", 
+                                      "{{ url_for('static', filename='images/istri/'+dt[6]) }}", 
+                                      "{{ url_for('static', filename='images/ktp/suami/'+dt[7]) }}",
+                                      "{{ url_for('static', filename='images/ktp/istri/'+dt[8]) }}",
+                                      "{{ url_for('static', filename='images/kk/'+dt[9]) }}",
+                                      "{{ url_for('static', filename='images/kendaraan/'+dt[10]) }}",
+                                      "{{ url_for('static', filename='images/sertifikat_tanah/'+dt[11]) }}",
+                                      "{{ url_for('static', filename='images/stnk/'+dt[12]) }}",
+                                      "{{ url_for('static', filename='images/bpkb/'+dt[13]) }}",
+                                      "{{ url_for('static', filename='images/rmh/'+dt[15]) }}"
+                                    ],
+                                    type: 'image',
+                                    header: 'File Pendukung : {{ dt[1] }}',
+                                    imageStyle: 'width:50%;margin-bottom:20px;'
+                                  })
+                                })
+                              </script>
                             </div>
                             <div class="modal-body">
                               <div class="row">

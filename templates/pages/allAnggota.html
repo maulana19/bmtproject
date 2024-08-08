@@ -37,7 +37,13 @@
                     <div class="input-group-append">
                       <button type="submit" class="btn btn-default">
                         <i class="fas fa-search"></i>
+
                       </button>
+                    </div>
+                    <div class="input-group-append">
+                      <a href="/anggota-all" class="btn btn-default">
+                        Semua Data
+                      </a>
                     </div>
                   </div>
                 </form>
@@ -65,10 +71,34 @@
                     <td>{{dt[1]}}</td>
                     <td>{{dt[3]}}</td>
                     <td>
-                      <center><a href="" data-toggle="modal"
-                        data-target="#modal-lg-pr{{loop.index}}" class="btn btn-info btn-sm">Detail</a></center>
-                      
+                      <center>
+                        <a href="" data-toggle="modal"
+                        data-target="#modal-lg-pr{{loop.index}}" class="btn btn-info btn-sm">Detail</a>
+                        <button id="download{{ loop.index }}" class="btn btn-sm btn-success">Cetak PDF</button>
+                                
+                      </center>
 
+                      <script>
+                        document.getElementById('download{{ loop.index }}').addEventListener('click', ()=>{
+                          printJS({
+                            printable: [
+                              "{{ url_for('static', filename='images/suami/'+dt[5]) }}", 
+                              "{{ url_for('static', filename='images/istri/'+dt[6]) }}", 
+                              "{{ url_for('static', filename='images/ktp/suami/'+dt[7]) }}",
+                              "{{ url_for('static', filename='images/ktp/istri/'+dt[8]) }}",
+                              "{{ url_for('static', filename='images/kk/'+dt[9]) }}",
+                              "{{ url_for('static', filename='images/kendaraan/'+dt[10]) }}",
+                              "{{ url_for('static', filename='images/sertifikat_tanah/'+dt[11]) }}",
+                              "{{ url_for('static', filename='images/stnk/'+dt[12]) }}",
+                              "{{ url_for('static', filename='images/bpkb/'+dt[13]) }}",
+                              "{{ url_for('static', filename='images/rmh/'+dt[15]) }}"
+                            ],
+                            type: 'image',
+                            header: 'File Pendukung : {{ dt[1] }}',
+                            imageStyle: 'width:50%;margin-bottom:20px;'
+                          })
+                        })
+                      </script>
                       <div class="modal fade" id="modal-lg-pr{{loop.index}}">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
